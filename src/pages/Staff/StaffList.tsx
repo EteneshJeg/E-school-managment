@@ -1,17 +1,17 @@
-import { useState } from "react";
-import PageMeta from "../../components/common/PageMeta";
-import PageBreadcrumb from "../../components/common/PageBreadCrumb";
 import ComponentCard from "../../components/common/ComponentCard";
-import StaffTable from "../../components/staff/StaffTable";
-import StaffModal from "./StaffModal";
 import DeleteConfirm from "../../components/common/DeleteConfirm";
+import PageBreadcrumb from "../../components/common/PageBreadCrumb";
+import PageMeta from "../../components/common/PageMeta";
+import StaffModal from "./StaffModal";
+import StaffTable from "../../components/staff/StaffTable";
+import { useState } from "react";
 
 export default function StaffList() {
   const [openModal, setOpenModal] = useState(false);
   const [mode, setMode] = useState<"add" | "edit" | "view">("add");
   const [selectedStaff, setSelectedStaff] = useState<any>(null);
   const [deleteOpen, setDeleteOpen] = useState(false);
-const [staffToDelete, setStaffToDelete] = useState<any>(null);
+  const [staffToDelete, setStaffToDelete] = useState<any>(null);
 
   return (
     <>
@@ -43,7 +43,7 @@ const [staffToDelete, setStaffToDelete] = useState<any>(null);
             setSelectedStaff(staff);
             setOpenModal(true);
           }}
-            onDelete={(staff) => {
+          onDelete={(staff) => {
             setStaffToDelete(staff);
             setDeleteOpen(true);
           }}
@@ -57,16 +57,15 @@ const [staffToDelete, setStaffToDelete] = useState<any>(null);
         staff={selectedStaff}
       />
       <DeleteConfirm
-          open={deleteOpen}
-          title="Delete Staff"
-          message={`Are you sure you want to delete ${staffToDelete?.name}?`}
-          onCancel={() => setDeleteOpen(false)}
-          onConfirm={() => {
-            console.log("Deleted:", staffToDelete);
-            setDeleteOpen(false);
-          }}
-        />
-
+        open={deleteOpen}
+        title="Delete Staff"
+        message={`Are you sure you want to delete ${staffToDelete?.name}?`}
+        onCancel={() => setDeleteOpen(false)}
+        onConfirm={() => {
+          console.log("Deleted:", staffToDelete);
+          setDeleteOpen(false);
+        }}
+      />
     </>
   );
 }

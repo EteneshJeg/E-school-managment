@@ -1,7 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { Route, BrowserRouter as Router, Routes } from "react-router";
+
+import AddStaff from "./pages/Staff/AddStaff";
+import AppLayout from "./layout/AppLayout";
+import Home from "./pages/Dashboard/Home";
+import NotFound from "./pages/OtherPage/NotFound";
+import { ScrollToTop } from "./components/common/ScrollToTop";
+import Settings from "./pages/Settings/Settings";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
-import NotFound from "./pages/OtherPage/NotFound";
+import StaffList from "./pages/Staff/StaffList";
+import StudentList from "./pages/Students/StudentList";
+import StudentStaff from "./pages/Students/StudentList";
+
 // import UserProfiles from "./pages/UserProfiles";
 // import Videos from "./pages/UiElements/Videos";
 // import Images from "./pages/UiElements/Images";
@@ -15,13 +25,6 @@ import NotFound from "./pages/OtherPage/NotFound";
 // import BasicTables from "./pages/Tables/BasicTables";
 // import FormElements from "./pages/Forms/FormElements";
 // import Blank from "./pages/Blank";
-import Settings from "./pages/Settings/Settings";
-import AppLayout from "./layout/AppLayout";
-import { ScrollToTop } from "./components/common/ScrollToTop";
-import Home from "./pages/Dashboard/Home";
-import StaffList from "./pages/Staff/StaffList";
-import AddStaff from "./pages/Staff/AddStaff";
-
 
 export default function App() {
   return (
@@ -35,9 +38,11 @@ export default function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/staff" element={<StaffList />} />
             <Route path="/staff/add" element={<AddStaff />} />
+            <Route path="/student" element={<StaffList />} />
+            <Route path="/student/add" element={<AddStaff />} />
 
             {/* Others Page */}
-             {/* <Route path="/profile" element={<UserProfiles />} />
+            {/* <Route path="/profile" element={<UserProfiles />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />*/}
 

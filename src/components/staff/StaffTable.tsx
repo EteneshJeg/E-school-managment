@@ -1,3 +1,4 @@
+import { Eye, Pencil, Trash2 } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -5,7 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { Pencil, Trash2, Eye } from "lucide-react";
+
 import Badge from "../ui/badge/Badge";
 
 interface Staff {
@@ -31,6 +32,20 @@ const staffData: Staff[] = [
     email: "sara@school.com",
     status: "Inactive",
   },
+  {
+    id: 3,
+    name: "Melat Tadesse",
+    role: "Teacher",
+    email: "melat@school.com",
+    status: "Active",
+  },
+  {
+    id: 4,
+    name: "Abebe Kebede",
+    role: "Admin",
+    email: "abebe@school.com",
+    status: "Inactive",
+  },
 ];
 
 interface Props {
@@ -53,7 +68,7 @@ export default function StaffTable({ onEdit, onDelete, onView }: Props) {
           </TableRow>
         </TableHeader>
 
-        <TableBody>
+        <TableBody className="text-center">
           {staffData.map((staff) => (
             <TableRow key={staff.id}>
               <TableCell>{staff.name}</TableCell>
@@ -69,7 +84,7 @@ export default function StaffTable({ onEdit, onDelete, onView }: Props) {
               </TableCell>
 
               <TableCell>
-                <div className="flex gap-2">
+                <div className="flex gap-5  justify-center">
                   <button
                     onClick={() => onView(staff)}
                     className="text-blue-500 hover:text-blue-700"

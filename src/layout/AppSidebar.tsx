@@ -1,22 +1,17 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router";
-
-// Assume these icons are imported from an icon library
 import {
-  // BoxCubeIcon,
-  // CalenderIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
-  // ListIcon,
-  // PageIcon,
-  // PieChartIcon,
   PlugInIcon,
-  // TableIcon,
   UserCircleIcon,
-  
 } from "../icons";
+import { Link, useLocation } from "react-router";
+import { useCallback, useEffect, useRef, useState } from "react";
+
 import { useSidebar } from "../context/SidebarContext";
+
+// Assume these icons are imported from an icon library
+
 // import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
@@ -33,15 +28,20 @@ const navItems: NavItem[] = [
     path: "/",
   },
   {
-  name: "Settings",
-  icon:  <PlugInIcon /> ,
-  path: "/settings",
-},
-{
-  name: "Staff",
-  icon: <UserCircleIcon/>,
-  path: "/staff",
-},
+    name: "Settings",
+    icon: <PlugInIcon />,
+    path: "/settings",
+  },
+  {
+    name: "Staff",
+    icon: <UserCircleIcon />,
+    path: "/staff",
+  },
+  {
+    icon: <UserCircleIcon />,
+    name: "Students",
+    path: "/students",
+  },
   // {
   //   icon: <CalenderIcon />,
   //   name: "Calendar",
