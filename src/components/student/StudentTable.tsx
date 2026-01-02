@@ -1,4 +1,4 @@
-import { EyeIcon, PencilIcon, Trash2 } from "lucide-react";
+import { Eye, Pencil, Trash2 } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -6,14 +6,15 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import Badge from "../ui/badge/Badge";
 
-type Student = {
+interface Student {
   id: number;
   name: string;
   email: string;
   grade: string;
   status: "Active" | "Inactive";
-};
+}
 
 interface StudentTableProps {
   onView: (student: Student) => void;
@@ -36,6 +37,21 @@ const students: Student[] = [
     grade: "Grade 10",
     status: "Inactive",
   },
+  {
+    id: 3,
+    name: "mahder Kebede",
+    email: "mahu@gmail.com",
+    grade: "Grade 10",
+    status: "Active",
+  },
+  {
+    id: 4,
+    name: "Bereket Kebede",
+    email: "beri@gmail.com",
+    grade: "Grade 10",
+    status: "Active",
+  },
+  
 ];
 
 export default function StudentTable({
@@ -44,7 +60,7 @@ export default function StudentTable({
   onDelete,
 }: StudentTableProps) {
   return (
-    <div className="overflow-hidden rounded-xl border bg-white dark:bg-white/[0.03]">
+    <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-white/[0.05]">
       <Table>
         <TableHeader>
           <TableRow>
@@ -56,23 +72,43 @@ export default function StudentTable({
           </TableRow>
         </TableHeader>
 
-        <TableBody>
+        <TableBody className="text-center">
           {students.map((student) => (
             <TableRow key={student.id}>
               <TableCell>{student.name}</TableCell>
               <TableCell>{student.email}</TableCell>
               <TableCell>{student.grade}</TableCell>
-              <TableCell>{student.status}</TableCell>
+
               <TableCell>
-                <div className="flex gap-2">
-                  <button onClick={() => onView(student)}>
-                    <EyeIcon size={18} />
+                <Badge
+                  size="sm"
+                  color={student.status === "Active" ? "success" : "error"}
+                >
+                  {student.status}
+                </Badge>
+              </TableCell>
+
+              <TableCell>
+                <div className="flex gap-5 justify-center">
+                  <button
+                    onClick={() => onView(student)}
+                    className="text-blue-500 hover:text-blue-700"
+                  >
+                    <Eye size={18} />
                   </button>
-                  <button onClick={() => onEdit(student)}>
-                    <PencilIcon size={18} />
+
+                  <button
+                    onClick={() => onEdit(student)}
+                    className="text-yellow-500 hover:text-yellow-700"
+                  >
+                    <Pencil size={18} />
                   </button>
-                  <button onClick={() => onDelete(student)}>
-                    <Trash2 size={18} className="text-red-500" />
+
+                  <button
+                    onClick={() => onDelete(student)}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    <Trash2 size={18} />
                   </button>
                 </div>
               </TableCell>

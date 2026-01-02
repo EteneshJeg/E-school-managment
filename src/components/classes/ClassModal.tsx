@@ -1,13 +1,19 @@
 import Form from "../../components/form/Form";
+import { ClassItem } from "./ClassesTable";
 
 interface Props {
   open: boolean;
   onClose: () => void;
   mode: "add" | "edit" | "view";
-  staff?: any;
+  classData?: ClassItem | null;
 }
 
-export default function StaffModal({ open, onClose, mode, staff }: Props) {
+export default function ClassModal({
+  open,
+  onClose,
+  mode,
+  classData,
+}: Props) {
   if (!open) return null;
 
   const isView = mode === "view";
@@ -15,10 +21,10 @@ export default function StaffModal({ open, onClose, mode, staff }: Props) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div className="w-full max-w-lg rounded-xl bg-white p-6 dark:bg-gray-900">
-        <h2 className="mb-6 text-xl font-semibold">
-          {mode === "add" && "Add Staff"}
-          {mode === "edit" && "Edit Staff"}
-          {mode === "view" && "View Staff"}
+        <h2 className="mb-6 text-xl font-semibold text-gray-800 dark:text-white">
+          {mode === "add" && "Add Class"}
+          {mode === "edit" && "Edit Class"}
+          {mode === "view" && "View Class"}
         </h2>
 
         <Form
@@ -26,28 +32,34 @@ export default function StaffModal({ open, onClose, mode, staff }: Props) {
           className="grid grid-cols-1 gap-6 sm:grid-cols-2"
         >
           <input
-            disabled={isView}
-            defaultValue={staff?.name}
-            placeholder="Full Name"
             className="input"
+            placeholder="Class Name"
+            defaultValue={classData?.name}
+            disabled={isView}
           />
 
           <input
-            disabled={isView}
-            defaultValue={staff?.email}
-            placeholder="Email"
             className="input"
+            placeholder="Section"
+            defaultValue={classData?.section}
+            disabled={isView}
+          />
+
+          <input
+            className="input"
+            placeholder="Class Teacher"
+            defaultValue={classData?.teacher}
+            disabled={isView}
           />
 
           <select
-            disabled={isView}
-            defaultValue={staff?.role}
             className="input"
+            defaultValue={classData?.status}
+            disabled={isView}
           >
-            <option value="">Select Role</option>
-            <option>Teacher</option>
-            <option>Admin</option>
-            <option>Assembly Staff</option>
+            <option value="">Select Status</option>
+            <option>Active</option>
+            <option>Inactive</option>
           </select>
 
           <div className="col-span-2 flex justify-end gap-4">

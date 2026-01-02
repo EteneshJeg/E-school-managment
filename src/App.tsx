@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import AddStaff from "./pages/Staff/AddStaff";
 import AppLayout from "./layout/AppLayout";
@@ -10,7 +10,9 @@ import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import StaffList from "./pages/Staff/StaffList";
 import StudentList from "./pages/Students/StudentList";
-import StudentStaff from "./pages/Students/StudentList";
+import ClassesList from "./pages/classes/ClassesList";
+import AddClass from "./pages/classes/AddClass";
+
 
 // import UserProfiles from "./pages/UserProfiles";
 // import Videos from "./pages/UiElements/Videos";
@@ -38,8 +40,10 @@ export default function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/staff" element={<StaffList />} />
             <Route path="/staff/add" element={<AddStaff />} />
-            <Route path="/student" element={<StaffList />} />
+            <Route path="/students" element={<StudentList />} />
             <Route path="/student/add" element={<AddStaff />} />
+            <Route path="/classes" element={<ClassesList />} />
+<Route path="/classes/add" element={<AddClass />} />
 
             {/* Others Page */}
             {/* <Route path="/profile" element={<UserProfiles />} />

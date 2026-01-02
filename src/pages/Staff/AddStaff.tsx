@@ -14,7 +14,7 @@ export default function AddStaff() {
       <PageBreadcrumb pageTitle="Add Staff" />
 
       <ComponentCard title="Staff Information">
-        <Form onSubmit={() => {}} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Form onSubmit={() => {}} className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <input className="input" placeholder="Full Name" />
           <input className="input" placeholder="Email" />
           <input className="input" placeholder="Phone Number" />

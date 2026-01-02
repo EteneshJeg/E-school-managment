@@ -32,6 +32,11 @@ const navItems: NavItem[] = [
     icon: <PlugInIcon />,
     path: "/settings",
   },
+    {
+    name: "Classes",
+    icon: <PlugInIcon />,
+    path: "/classes",
+  },
   {
     name: "Staff",
     icon: <UserCircleIcon />,
